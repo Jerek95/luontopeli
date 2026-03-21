@@ -72,5 +72,12 @@ dependencies {
     // Accompanist Permissions — ajonaikaiset luvat (lisätään viikolla 2–3)
     implementation(libs.accompanist.permissions)
 
-    debugImplementation(libs.androidx.compose.ui.tooling)
+    // Test
+//    testImplementation(libs.junit)
+//    androidTestImplementation(libs.androidx.junit)
+//    androidTestImplementation(libs.androidx.espresso.core)
+//    androidTestImplementation(composeBom)
+//    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+//    debugImplementation(libs.androidx.compose.ui.tooling)
+//    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
