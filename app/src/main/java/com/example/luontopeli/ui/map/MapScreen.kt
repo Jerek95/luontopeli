@@ -160,7 +160,7 @@ fun WalkStatsCard(viewModel: WalkViewModel) {
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )
-            
+
             session?.let { s ->
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
