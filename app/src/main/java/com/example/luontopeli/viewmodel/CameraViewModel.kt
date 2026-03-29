@@ -94,6 +94,33 @@ class CameraViewModel(application: Application) : AndroidViewModel(application) 
         _classificationResult.value = null
     }
 
+
+    override fun onCleared() {
+        super.onCleared()
+        classifier.close()
+    }
+
+
+    fun takePhotoAndClassify(context: Context, imageCapture: ImageCapture) {
+        _isLoading.value = true
+        viewModelScope.launch {
+            val imagePath = takePhotoSuspend(context, imageCapture)
+            if (imagePath == null) { _isLoading.value = false; return@launch }
+
+            _capturedImagePath.value = imagePath
+
+            try {
+                val uri = Uri.fromFile(File(imagePath))
+                val result = classifier.classify(uri, context)
+                _classificationResult.value = result
+            } catch (e: Exception) {
+                _classificationResult.value = ClassificationResult.Error(e.message ?: "Tuntematon virhe")
+            }
+
+            _isLoading.value = false
+        }
+    }
+
     fun saveCurrentSpot() {
         val imagePath = _capturedImagePath.value ?: return
         viewModelScope.launch {
@@ -112,11 +139,7 @@ class CameraViewModel(application: Application) : AndroidViewModel(application) 
             )
             repository.insertSpot(spot)
             clearCapturedImage()
+            _classificationResult.value = null
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        classifier.close()
     }
 }

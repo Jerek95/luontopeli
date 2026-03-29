@@ -25,7 +25,7 @@ class NatureSpotRepository(
     suspend fun deleteSpot(spot: NatureSpot) {
         dao.delete(spot)
     }
-    
+
     suspend fun getUnsyncedSpots(): List<NatureSpot> {
         return dao.getUnsyncedSpots()
     }
