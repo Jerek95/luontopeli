@@ -104,10 +104,10 @@ class CameraViewModel(application: Application) : AndroidViewModel(application) 
     fun takePhotoAndClassify(context: Context, imageCapture: ImageCapture) {
         _isLoading.value = true
         viewModelScope.launch {
-            val imagePath = takePhotoSuspend(context, imageCapture)
+            val imagePath = takePhoto(context, imageCapture)
             if (imagePath == null) { _isLoading.value = false; return@launch }
 
-            _capturedImagePath.value = imagePath
+            _capturedImagePath.value = imagePath.toString()
 
             try {
                 val uri = Uri.fromFile(File(imagePath))

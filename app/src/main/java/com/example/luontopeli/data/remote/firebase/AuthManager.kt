@@ -14,6 +14,6 @@ class AuthManager {
     }
 
     fun signOut() {
-        // No-op offline-tilassa
+
     }
 }

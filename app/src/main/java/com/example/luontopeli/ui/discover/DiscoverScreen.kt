@@ -1,19 +1,24 @@
 package com.example.luontopeli.ui.discover
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.luontopeli.data.local.entity.NatureSpot
+import com.example.luontopeli.viewmodel.toFormattedDate
+import java.io.File
 
 @Composable
 fun MapScreen() {
@@ -64,7 +69,7 @@ fun DiscoverScreen(viewModel: DiscoverViewModel = viewModel()) {
         ) {
             item {
                 Text(
-                    "${spots.size} löytöä",
+                    "${spots.size()} löytöä",
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )

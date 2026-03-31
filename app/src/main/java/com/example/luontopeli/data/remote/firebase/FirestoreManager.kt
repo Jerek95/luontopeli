@@ -1,5 +1,6 @@
 package com.example.luontopeli.data.remote.firebase
 
+import com.example.luontopeli.data.local.entity.NatureSpot
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

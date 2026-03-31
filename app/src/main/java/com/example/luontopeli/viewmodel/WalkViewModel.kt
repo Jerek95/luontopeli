@@ -33,7 +33,7 @@ class WalkViewModel(application: Application) : AndroidViewModel(application) {
             _currentSession.update { current ->
                 current?.copy(
                     stepCount = current.stepCount + 1,
-                    distanceMeters = current.distanceMeters + StepCounterManager.STEP_LENGTH_METERS
+                    distanceMeters = current.distanceMeters + stepManager.STEP_LENGTH_METERS
                 )
             }
         }

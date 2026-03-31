@@ -80,6 +80,7 @@ class StepCounterManager(context: Context) {
     }
 
     fun isStepSensorAvailable(): Boolean = stepSensor != null
+
+    val STEP_LENGTH_METERS = 0.74f
 }
 
-const val STEP_LENGTH_METERS = 0.74f
