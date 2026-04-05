@@ -110,7 +110,7 @@ class CameraViewModel(application: Application) : AndroidViewModel(application) 
             _capturedImagePath.value = imagePath.toString()
 
             try {
-                val uri = Uri.fromFile(File(imagePath))
+                val uri = Uri.fromFile(File(imagePath.toString()))
                 val result = classifier.classify(uri, context)
                 _classificationResult.value = result
             } catch (e: Exception) {

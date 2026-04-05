@@ -70,6 +70,8 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
 
+    implementation("com.google.guava:guava:29.0-android")
+
     // Test
 //    testImplementation(libs.junit)
 //    androidTestImplementation(libs.androidx.junit)

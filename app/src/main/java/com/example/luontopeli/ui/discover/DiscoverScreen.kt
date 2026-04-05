@@ -3,11 +3,17 @@ package com.example.luontopeli.ui.discover
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Cloud
+import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.Nature
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -17,8 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.luontopeli.data.local.entity.NatureSpot
+import com.example.luontopeli.viewmodel.DiscoverViewModel
 import com.example.luontopeli.viewmodel.toFormattedDate
 import java.io.File
+
 
 @Composable
 fun MapScreen() {
@@ -55,7 +63,7 @@ fun DiscoverScreen(viewModel: DiscoverViewModel = viewModel()) {
     if (spots.isEmpty()) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Icon(Icons.Default.NatureOutlined, null,
+                Icon(Icons.Default.Nature, null,
                     modifier = Modifier.size(64.dp), tint = Color.Gray)
                 Text("Ei löytöjä vielä", modifier = Modifier.padding(8.dp))
                 Text("Ota kuva kasveista kameralla!",
@@ -69,7 +77,7 @@ fun DiscoverScreen(viewModel: DiscoverViewModel = viewModel()) {
         ) {
             item {
                 Text(
-                    "${spots.size()} löytöä",
+                    "${spots.size} löytöä",
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
@@ -105,7 +113,7 @@ fun NatureSpotCard(spot: NatureSpot) {
                         .background(MaterialTheme.colorScheme.surfaceVariant),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(Icons.Default.NatureOutlined, null)
+                    Icon(Icons.Default.Nature, null)
                 }
             }
 

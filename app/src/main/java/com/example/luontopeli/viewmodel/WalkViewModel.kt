@@ -4,6 +4,7 @@ import StepCounterManager
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.luontopeli.data.local.AppDatabase
 import com.example.luontopeli.data.local.entity.WalkSession
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
 
 class WalkViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val db = AppDatabase.getDatabase(application)
     private val stepManager = StepCounterManager(application)
 
     private val _currentSession = MutableStateFlow<WalkSession?>(null)
